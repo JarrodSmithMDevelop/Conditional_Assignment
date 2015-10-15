@@ -14,50 +14,65 @@ var intrest;                    //The interest rate on the loan
 var monthlyPayment;             //Number of monthly payments
 var typePayments = true;        //If this is true you will input years of the loan, if false then you will enter months
 var yearsOfLoan;                //How many year term the loan is.
-var payment;
+var payment;                    //The amount of the monthly payment
 
 //Inputs
 
-creditScore = prompt("Enter your credit score.");
+creditScore = Number(prompt("Enter your credit score."));       //Enter the credit score
 
-if (creditScore = ""){
+//Check to ensure user has entered a value
+if (creditScore === 0){
     creditScore = prompt("Please enter your credit score.")
 }
 
 if (creditScore < 600){
-    intrest = (.01);                    //Intrest rate of %12
+    intrest = (.01);                                    //Intrest rate of %12
+    console.log("Your intrest rate will be %12.");      //Print interest rate to console
 
 }else if (creditScore < 700){
-    intrest = (.006666667);             //Intrest rate of %8
+    intrest = (.006666667);                             //Intrest rate of %8
+    console.log("Your intrest rate will be %8.");       //Print interest rate to console
 
 }else{
-    intrest = (.00375);                 //Intrest rate of %4.5
+    intrest = (.00375);                                 //Intrest rate of %4.5
+    console.log("Your intrest rate will be %4.5.");     //Print interest rate to console
 }
    // console.log(intrest)
 
-principle = Number(prompt("Enter the amount for mortgage loan for your home."));        //Enter the amount of the loan
-typePayments = confirm("Click \"OK\" for years or click \"Cancel\"");                   //This decides for years or months
+//Enter the amount of the loan
+principle = Number(prompt("Enter the amount for mortgage loan for your home."));
+//Check to ensure the user entered amount
+if (principle === 0){
+    principle = Number(prompt("Please enter the amount for the mortgage loan for your home."))
+}
+
+//This decides for years or months
+typePayments = confirm("Click \"OK\" for years or click \"Cancel\"");           //Confirm the type of payment
 
 if (typePayments === true){
-
-    yearsOfLoan = Number(prompt("Enter the amount of years of the loan."));
+    yearsOfLoan = Number(prompt("Enter the amount of years of the loan."));     //Number of years for term of loan
+        //Check to ensure the user entered amount
+        if (yearsOfLoan === 0){
+            yearsOfLoan = Number(prompt("Please enter the total number of years of the loan."))
+        }
     monthlyPayment = yearsOfLoan * 12;
     console.log("You will make a total of " + monthlyPayment + " monthly payments.");
-
 }else{
-
     monthlyPayment = prompt("Enter the number of monthly payments you will be making.");
+        //Check to ensure the user entered amount
+        if (monthlyPayment === ""){
+            monthlyPayment = prompt("Please enter the number of monthly payments you will be making.")
+        }
+    monthlyPayment = Number(monthlyPayment);
     console.log("You entered that you will be making " + monthlyPayment + " monthly payments.")
 }
 
-
-
 //Equations
 
-
+payment = ((principle * intrest)/1-1/(Math.pow((1+intrest),monthlyPayment));
 
 //Output
 
-//console.log = ("Your monthly payment will be " + payment)
+console.log = ("Your monthly payment will be " + payment);
 
 //Test
