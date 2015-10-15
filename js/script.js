@@ -15,7 +15,8 @@ var monthlyPayment;             //Number of monthly payments
 var typePayments = true;        //If this is true you will input years of the loan, if false then you will enter months
 var yearsOfLoan;                //How many year term the loan is.
 var payment;                    //The amount of the monthly payment
-
+var intrestCompounded;          //Part of the compounding of intrest
+var downPayment;                //The amount of the down payment
 //Inputs
 
 creditScore = Number(prompt("Enter your credit score."));       //Enter the credit score
@@ -26,18 +27,20 @@ if (creditScore === 0){
 }
 
 if (creditScore < 600){
-    intrest = (.01);                                    //Intrest rate of %12
+    intrest = .01;                                    //Intrest rate of %12
     console.log("Your intrest rate will be %12.");      //Print interest rate to console
 
 }else if (creditScore < 700){
-    intrest = (.006666667);                             //Intrest rate of %8
+    intrest = .006666667;                             //Intrest rate of %8
     console.log("Your intrest rate will be %8.");       //Print interest rate to console
 
 }else{
-    intrest = (.00375);                                 //Intrest rate of %4.5
+    intrest = .00375;                                 //Intrest rate of %4.5
     console.log("Your intrest rate will be %4.5.");     //Print interest rate to console
 }
-   // console.log(intrest)
+
+//Enter the down payment
+downpayment = Number(prompt("Enter the amount of the down payment."));
 
 //Enter the amount of the loan
 principle = Number(prompt("Enter the amount for mortgage loan for your home."));
@@ -47,7 +50,7 @@ if (principle === 0){
 }
 
 //This decides for years or months
-typePayments = confirm("Click \"OK\" for years or click \"Cancel\"");           //Confirm the type of payment
+typePayments = confirm("Click \"OK\" for years or click \"Cancel\" to enter months.");           //Confirm the type of payment
 
 if (typePayments === true){
     yearsOfLoan = Number(prompt("Enter the amount of years of the loan."));     //Number of years for term of loan
@@ -69,10 +72,12 @@ if (typePayments === true){
 
 //Equations
 
-payment = ((principle * intrest)/1-1/(Math.pow((1+intrest),monthlyPayment));
+principle = principle - downPayment;
+intrestCompounded = intrest + 1;
+payment = principle*[intrest*(Math.pow(intrestCompounded,monthlyPayment))]/[Math.pow(intrestCompounded,monthlyPayment)-1];
 
 //Output
-
-console.log = ("Your monthly payment will be " + payment);
+payment = payment.toFixed(2);
+console.log ("Your monthly payment will be " + payment);
 
 //Test
