@@ -28,20 +28,20 @@ if (creditScore === 0){
 
 if (creditScore < 600){                                 //If your score is less then 600
     intrest = .01;                                      //Intrest rate of %12
-    console.log("Your intrest rate will be %12.");      //Print interest rate to console
+    console.log("Your intrest rate will be set at %12.");      //Print interest rate to console
 
 }else if (creditScore < 700){                           //if your score is less then 700
     intrest = .006666667;                               //Intrest rate of %8
-    console.log("Your intrest rate will be %8.");       //Print interest rate to console
+    console.log("Your intrest rate will be set at %8.");       //Print interest rate to console
 
 }else{                                                  //If your score is anything over 700
     intrest = .00375;                                   //Intrest rate of %4.5
-    console.log("Your intrest rate will be %4.5.");     //Print interest rate to console
+    console.log("Your intrest rate will be set at %4.5.");     //Print interest rate to console
 }
 
 //Enter the down payment
 downPayment = Number(prompt("Enter the amount of the down payment."));
-console.log("You entered " + downPayment + " for your down payment.");
+console.log("You entered $" + downPayment + " for your down payment.");
 
 //Enter the amount of the loan
 principle = Number(prompt("Enter the amount for mortgage loan for your home."));
@@ -64,11 +64,12 @@ if (typePayments === true){
     console.log("You will make a total of " + monthlyPayment + " monthly payments.");
 }else{
     monthlyPayment = prompt("Enter the number of monthly payments you will be making.");        //Enter number of monthly payments
+
         //Check to ensure the user entered amount
         if (monthlyPayment === ""){
             monthlyPayment = prompt("Please enter the number of monthly payments you will be making.")
         }
-    monthlyPayment = Number(monthlyPayment);
+    monthlyPayment = Number(monthlyPayment);                                                    //Converts string input into a number.
     console.log("You entered that you will be making " + monthlyPayment + " monthly payments.")
 }
 
@@ -79,7 +80,5 @@ intrestCompounded = intrest + 1;
 payment = principle*[intrest*(Math.pow(intrestCompounded,monthlyPayment))]/[Math.pow(intrestCompounded,monthlyPayment)-1];
 
 //Output
-payment = payment.toFixed(2);
-console.log ("Your monthly payment will be " + payment);
-
-//Test
+payment = payment.toFixed(2);                                                                   //This fixs the decimal to 2 places
+console.log ("Your monthly payment will be $" + payment);                                        //Prints your total monthly payment
