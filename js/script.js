@@ -16,7 +16,7 @@ var typePayments = true;        //If this is true you will input years of the lo
 var yearsOfLoan;                //How many year term the loan is.
 var payment;                    //The amount of the monthly payment
 var intrestCompounded;          //Part of the compounding of intrest
-var downPayment;                //The amount of the down payment
+var downPayment = 0;                //The amount of the down payment
 //Inputs
 
 creditScore = Number(prompt("Enter your credit score."));       //Enter the credit score
@@ -40,7 +40,8 @@ if (creditScore < 600){
 }
 
 //Enter the down payment
-downpayment = Number(prompt("Enter the amount of the down payment."));
+downPayment = Number(prompt("Enter the amount of the down payment."));
+console.log("You entered " + downPayment + " for your down payment.")
 
 //Enter the amount of the loan
 principle = Number(prompt("Enter the amount for mortgage loan for your home."));
