@@ -10,12 +10,12 @@
 
 var creditScore;                //Users credit score
 var principle;                  //Amount of the loan
-var intrest;                    //The interest rate on the loan
+var interest;                    //The interest rate on the loan
 var monthlyPayment;             //Number of monthly payments
 var typePayments = true;        //If this is true you will input years of the loan, if false then you will enter months
 var yearsOfLoan;                //How many year term the loan is.
 var payment;                    //The amount of the monthly payment
-var intrestCompounded;          //Part of the compounding of intrest
+var interestCompounded;          //Part of the compounding of intrest
 var downPayment = 0;            //The amount of the down payment
 //Inputs
 
@@ -27,15 +27,15 @@ if (creditScore === 0){
 }
 
 if (creditScore < 600){                                 //If your score is less then 600
-    intrest = .01;                                      //Intrest rate of %12
+    interest = .01;                                      //Intrest rate of %12
     console.log("Your intrest rate will be set at %12.");      //Print interest rate to console
 
 }else if (creditScore < 700){                           //if your score is less then 700
-    intrest = .006666667;                               //Intrest rate of %8
+    interest = .006666667;                               //Intrest rate of %8
     console.log("Your intrest rate will be set at %8.");       //Print interest rate to console
 
 }else{                                                  //If your score is anything over 700
-    intrest = .00375;                                   //Intrest rate of %4.5
+    interest = .00375;                                   //Intrest rate of %4.5
     console.log("Your intrest rate will be set at %4.5.");     //Print interest rate to console
 }
 
@@ -75,9 +75,9 @@ if (typePayments === true){
 
 //Equations
 
-principle = principle - downPayment;
-intrestCompounded = intrest + 1;
-payment = principle*[intrest*(Math.pow(intrestCompounded,monthlyPayment))]/[Math.pow(intrestCompounded,monthlyPayment)-1];
+principle = principle - downPayment;        //Principle after down payment
+interestCompounded = interest + 1;
+payment = principle*[interest*(Math.pow(interestCompounded,monthlyPayment))]/[Math.pow(interestCompounded,monthlyPayment)-1];  //Equation to figure payment
 
 //Output
 payment = payment.toFixed(2);                                                                   //This fixs the decimal to 2 places
